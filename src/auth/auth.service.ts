@@ -36,7 +36,7 @@ export class AuthService {
 
     const token = this.generateToken(user.id, user.email);
 
-    return { message: 'User registered successfully', token };
+    return { message: 'User registered successfully', token, name };
   }
 
   async login(loginAuthDto: LoginAuthDto) {
@@ -54,8 +54,8 @@ export class AuthService {
     }
 
     const token = this.generateToken(user.id, user.email);
-
-    return { message: 'Login successful', token };
+    const name = user.name;
+    return { message: 'Login successful', token, name };
   }
 
   private generateToken(userId: string, email: string) {
