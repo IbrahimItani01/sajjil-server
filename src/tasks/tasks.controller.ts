@@ -32,6 +32,7 @@ export class TasksController {
     return this.tasksService.findAll(req.user.sub);
   }
 
+  @UseGuards(AuthGuard)
   @Get(':id')
   async findOne(@Param('id') id: string) {
     return this.tasksService.findOne(id);
@@ -43,6 +44,7 @@ export class TasksController {
     return this.tasksService.update(id, updateTaskDto);
   }
 
+  @UseGuards(AuthGuard)
   @Delete(':id')
   async remove(@Param('id') id: string) {
     return this.tasksService.remove(id);
