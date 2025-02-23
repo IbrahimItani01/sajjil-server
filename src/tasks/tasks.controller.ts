@@ -26,9 +26,10 @@ export class TasksController {
     return this.tasksService.create(createTaskDto, req.user.sub);
   }
 
+  @UseGuards(AuthGuard)
   @Get()
-  async findAll(@Param('userId') userId: string) {
-    return this.tasksService.findAll(userId);
+  async findAll(@Request() req) {
+    return this.tasksService.findAll(req.user.sub);
   }
 
   @Get(':id')

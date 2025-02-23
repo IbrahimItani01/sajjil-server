@@ -23,7 +23,6 @@ export class TasksService {
     return this.prisma.todo.findMany({
       where: { userId },
       orderBy: {
-        priority: 'asc',
         date: 'asc',
       },
     });
