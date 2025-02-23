@@ -8,13 +8,13 @@ import { UpdateTaskDto } from './dtos/updateTask.dto';
 export class TasksService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(createTaskDto: CreateTaskDto) {
+  async create(createTaskDto: CreateTaskDto, userId: string) {
     return this.prisma.todo.create({
       data: {
         description: createTaskDto.description,
         priority: createTaskDto.priority,
         date: createTaskDto.date,
-        userId: createTaskDto.userId,
+        userId,
       },
     });
   }
